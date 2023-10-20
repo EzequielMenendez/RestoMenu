@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken'
 import config from '../../config'
 
 const registerController = async(req, res) => {
-    const {username, email, password} = req.body
+    const {username, email, password, roles} = req.body
     if(!username || !email || !password){
         return res.status(400).json({error: "Please fill out all the required fields."})
     }
