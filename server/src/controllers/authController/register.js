@@ -1,5 +1,6 @@
 import userFind from '../../libs/userFind'
 import User from '../../models/userModel'
+import Role from '../../models/roleModel'
 import jwt from 'jsonwebtoken'
 import config from '../../config'
 
@@ -19,6 +20,11 @@ const registerController = async(req, res) => {
             email,
             password: await User.encryptPassword(password)
         })
+
+        if(roles){
+            const foundRole = await Role.find({name: {$in: roles}})
+            newUser.roles = foundRole.map(role=>role._id)
+        }
     
         const saveUser = await newUser.save()
 
