@@ -10,9 +10,9 @@ const isRestaurant = async(req, res, next)=>{
             next()
         }
     
-        return res.status(403).json({error: "Requer Restaurant Role"})
+        return res.status(403).json({error: "Require Restaurant Role"})
     } catch (error) {
-        return res.status(500).json({error: "Requer Restaurant Role"})
+        return res.status(500).json({error: "Require Restaurant Role"})
     }
 }
 

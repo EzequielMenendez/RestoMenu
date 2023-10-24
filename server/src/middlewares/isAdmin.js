@@ -10,9 +10,9 @@ const isAdmin = async(req, res, next)=>{
             next()
         }
     
-        return res.status(403).json({error: "Requer Administrator Role"})
+        return res.status(403).json({error: "Require Administrator Role"})
     } catch (error) {
-        return res.status(500).json({error: "Requer Administrator Role"})
+        return res.status(500).json({error: "Require Administrator Role"})
     }
 }
 
