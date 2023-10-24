@@ -9,6 +9,7 @@ const verifyToken = async(req, res, next)=>{
         if(!token) return res.status(400).json({error: "No token provided"})
     
         const decoded = jwt.verify(token, config.SECRET)
+        req.userId = decoded.id
     
         await User.findById(decoded.id, {password: 0})
     
