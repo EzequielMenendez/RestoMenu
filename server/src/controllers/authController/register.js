@@ -6,7 +6,7 @@ import config from '../../config'
 
 const registerController = async(req, res) => {
     const {username, email, password, roles} = req.body
-    if(!username || !email || !password){
+    if(!username || !email || !password || !roles){
         return res.status(400).json({error: "Please fill out all the required fields."})
     }
     try { 
@@ -15,15 +15,22 @@ const registerController = async(req, res) => {
             return res.status(400).json({error: userFound})
         }
 
-        const newUser = new User({
+        let newUser = new User({
             username,
             email,
             password: await User.encryptPassword(password)
         })
 
-        if(roles){
-            const foundRole = await Role.find({name: roles})
-            newUser.roles = foundRole
+        const foundRole = await Role.find({name: roles})
+        newUser.roles = foundRole
+
+        if(roles === "restaurant"){
+            const { location, image } = req.body
+            if(!location){
+                return res.status(400).json({error: "Please fill out all the required fields."})
+            }
+            newUser.location = location
+            newUser.image = image
         }
     
         const saveUser = await newUser.save()
