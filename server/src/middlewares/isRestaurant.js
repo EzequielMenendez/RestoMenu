@@ -4,7 +4,7 @@ import Role from '../models/roleModel'
 const isRestaurant = async(req, res, next)=>{
     try {
         const user = await User.findById(req.userId)
-        const roles = await Role.find({_id: {$in: user.roles}})
+        const roles = await Role.find({_id: user.roles})
     
         if(roles.name === "restaurant"){
             next()

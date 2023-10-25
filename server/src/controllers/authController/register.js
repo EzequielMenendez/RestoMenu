@@ -22,8 +22,8 @@ const registerController = async(req, res) => {
         })
 
         if(roles){
-            const foundRole = await Role.find({name: {$in: roles}})
-            newUser.roles = foundRole.map(role=>role._id)
+            const foundRole = await Role.find({name: roles})
+            newUser.roles = foundRole
         }
     
         const saveUser = await newUser.save()
