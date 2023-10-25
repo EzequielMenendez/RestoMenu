@@ -19,14 +19,17 @@ const userSchema = new Schema({
     location:{
         type: String
     },
-    categories:{
+    image:{
+        type: Text
+    },
+    categories:[{
         ref: "Category",
         type: Schema.Types.ObjectId
-    },
-    roles: [{
+    }],
+    roles: {
         ref: "Role",
         type: Schema.Types.ObjectId
-    }]
+    }
 },
 {
     timestamps: true,
