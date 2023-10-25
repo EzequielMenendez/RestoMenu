@@ -16,6 +16,13 @@ const userSchema = new Schema({
         type: String,
         require: true
     },
+    location:{
+        type: String
+    },
+    categories:{
+        ref: "Category",
+        type: Schema.Types.ObjectId
+    },
     roles: [{
         ref: "Role",
         type: Schema.Types.ObjectId
