@@ -5,18 +5,20 @@ const productRouter = Router()
 
 productRouter.get('/')
 
+productRouter.get('/category')
+
 productRouter.get('/:id')
 
 productRouter.post('/', isRestaurant)
 
-productRouter.put('/', isRestaurant)
+productRouter.put('/category/:id', isRestaurant)
 
-productRouter.delete('/', isRestaurant)
+productRouter.delete('/category/:id', isRestaurant)
+
+productRouter.put('/:id', isRestaurant)
+
+productRouter.delete('/:id', isRestaurant)
 
 productRouter.post('/category', isRestaurant)
-
-productRouter.put('/category', isRestaurant)
-
-productRouter.delete('/category', isRestaurant)
 
 export default productRouter
