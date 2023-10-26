@@ -6,14 +6,9 @@ const postCategory = async(req, res) => {
     try {
         const findUser = await User.findById(restaurantId).populate('categories')
         if(!findUser)return res.status(404).json({error: 'User not found'})
-        const findCategory = findUser.categories.map(categories=>{
-            if(categories.name === name){
-                return name
-            }
-        })
-        if(findCategory.length > 0)return res.status(400).json({error: `Category "${name}" is already exist`})
-        const newCategory = new Category({name})
-        newCategory.owner = restaurantId
+        const existingCategory = findUser.categories.find(category => category.name === name)
+        if(existingCategory)return res.status(400).json({error: `Category "${name}" is already exist`})
+        const newCategory = new Category({name, restaurant: restaurantId})
         const saveCategory = await newCategory.save()
 
         findUser.categories.push(saveCategory)

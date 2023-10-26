@@ -5,7 +5,11 @@ const categorySchema = new Schema({
         type: String,
         require: true,
         unique: false
+    },
+    restaurant:{
+        ref: 'User',
+        type: Schema.Types.ObjectId
     }
-})
+},{versionKey: false })
 
 export default model('Category', categorySchema)
