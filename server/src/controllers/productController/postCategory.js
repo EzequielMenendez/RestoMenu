@@ -13,9 +13,9 @@ const postCategory = async(req, res) => {
         })
         if(findCategory)return res.status(400).json({error: `Category "${name}" is already exist`})
         const newCategory = new Category({name})
-        await newCategory.save()
+        const saveCategory = await newCategory.save()
 
-        return res.status(201).json(newCategory)
+        return res.status(201).json(saveCategory)
     } catch (error) {
         return res.status(500).json({error: 'Server Error'})
     }
