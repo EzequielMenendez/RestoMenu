@@ -1,7 +1,7 @@
 import User from '../../models/userModel'
 
 const getCategory = async(req, res)=>{
-    const { restaurantId } = req.body
+    const { restaurantId } = req.query
 
     try {
         const restaurant = await User.findById(restaurantId).populate('categories')

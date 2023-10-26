@@ -2,7 +2,7 @@ import Product from '../../models/productModel'
 import Category from '../../models/categoryModel'
 
 const getProduct = async(req, res) => {
-    const { categoryId } = req.body
+    const { categoryId } = req.query
     try {
         const products = await Product.find({categories:{$in: categoryId}}).populate('categories')
 
