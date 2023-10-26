@@ -4,7 +4,7 @@ import Category from '../../models/categoryModel'
 const getProduct = async(req, res) => {
     const { categoryId } = req.body
     try {
-        const products = await Product.findAll({categories:{$in: categoryId}}).populate('Category')
+        const products = await Product.findAll({categories:{$in: categoryId}}).populate('categories')
 
         if(products.length === 0)return res.status(404).json({error: 'Products not found'})
         res.status(200).json(products)
