@@ -21,7 +21,7 @@ const registerController = async(req, res) => {
             password: await User.encryptPassword(password)
         })
 
-        const foundRole = await Role.find({name: roles})
+        const foundRole = await Role.findOne({name: roles})
         newUser.roles = foundRole
 
         if(roles === "restaurant"){

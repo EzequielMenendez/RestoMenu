@@ -20,7 +20,7 @@ const userSchema = new Schema({
         type: String
     },
     image:{
-        type: Text
+        type: String
     },
     categories:[{
         ref: "Category",

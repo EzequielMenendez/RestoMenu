@@ -1,6 +1,7 @@
 import { Router } from "express"
 import loginController from "../controllers/authController/login"
 import registerController from "../controllers/authController/register"
+import { verify } from "jsonwebtoken"
 
 const authRouter = Router()
 

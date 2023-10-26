@@ -10,10 +10,10 @@ const productSchema = new Schema({
         require: true
     },
     image: {
-        type: Text
+        type: String
     },
     description: {
-        type: Text
+        type: String
     },
     categories:[{
         ref: "Category",

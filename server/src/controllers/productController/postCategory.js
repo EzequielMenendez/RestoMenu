@@ -11,13 +11,17 @@ const postCategory = async(req, res) => {
                 return name
             }
         })
-        if(findCategory)return res.status(400).json({error: `Category "${name}" is already exist`})
+        if(findCategory.length > 0)return res.status(400).json({error: `Category "${name}" is already exist`})
         const newCategory = new Category({name})
+        newCategory.owner = restaurantId
         const saveCategory = await newCategory.save()
+
+        findUser.categories.push(saveCategory)
+        await findUser.save()
 
         return res.status(201).json(saveCategory)
     } catch (error) {
-        return res.status(500).json({error: 'Server Error'})
+        return res.status(500).json({error: error.message})
     }
 }
 
