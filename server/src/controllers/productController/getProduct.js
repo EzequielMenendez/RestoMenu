@@ -1,5 +1,4 @@
 import Product from '../../models/productModel'
-import Category from '../../models/categoryModel'
 
 const getProduct = async(req, res) => {
     const { categoryId } = req.query
