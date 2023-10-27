@@ -6,6 +6,7 @@ import postProduct from "../controllers/productController/postProduct"
 import postCategory from "../controllers/productController/postCategory"
 import verifyToken from "../middlewares/authJwt"
 import putProduct from "../controllers/productController/putProduct"
+import putCategory from "../controllers/productController/putCategory"
 
 const productRouter = Router()
 
@@ -17,7 +18,7 @@ productRouter.get('/category', getCategory)
 
 productRouter.post('/', [verifyToken, isRestaurant], postProduct)
 
-//productRouter.put('/category/:id', isRestaurant)
+productRouter.put('/category/:id', [verifyToken, isRestaurant], putCategory)
 
 //productRouter.delete('/category/:id', isRestaurant)
 
