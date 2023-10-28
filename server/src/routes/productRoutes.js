@@ -8,6 +8,7 @@ import verifyToken from "../middlewares/authJwt"
 import putProduct from "../controllers/productController/putProduct"
 import putCategory from "../controllers/productController/putCategory"
 import deleteProduct from "../controllers/productController/deleteProduct"
+import deleteCategory from "../controllers/productController/deleteCategory"
 
 const productRouter = Router()
 
@@ -21,7 +22,7 @@ productRouter.post('/', [verifyToken, isRestaurant], postProduct)
 
 productRouter.put('/category/:id', [verifyToken, isRestaurant], putCategory)
 
-//productRouter.delete('/category/:id', [verifyToken, isRestaurant])
+productRouter.delete('/category/:id', [verifyToken, isRestaurant], deleteCategory)
 
 productRouter.put('/:id', [verifyToken, isRestaurant], putProduct)
 
