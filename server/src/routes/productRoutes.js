@@ -9,6 +9,7 @@ import putProduct from "../controllers/productController/putProduct"
 import putCategory from "../controllers/productController/putCategory"
 import deleteProduct from "../controllers/productController/deleteProduct"
 import deleteCategory from "../controllers/productController/deleteCategory"
+import getProductById from "../controllers/productController/getProductById"
 
 const productRouter = Router()
 
@@ -16,7 +17,7 @@ productRouter.get('/', getProduct)
 
 productRouter.get('/category', getCategory)
 
-//productRouter.get('/:id')
+productRouter.get('/:id', getProductById)
 
 productRouter.post('/', [verifyToken, isRestaurant], postProduct)
 
