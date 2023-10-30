@@ -39,7 +39,13 @@ const registerController = async(req, res) => {
             expiresIn: 86400
         })
 
-        return res.status(201).json({token})
+        res.cookie("token", token)
+
+        return res.status(201).json({
+            name: saveUser.name,
+            email: saveUser.email,
+            id: saveUser._id
+        })
     } catch (error) {
         return res.status(500).json({error: error.message})
     }

@@ -16,7 +16,13 @@ const loginController = async(req, res) => {
             expiresIn: 86400
         })
 
-        return res.status(200).json({token})
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'none'
+        })
+
+        return res.status(200).json({message: 'User logged'})
 
     } catch (error) {
         return res.status(500).json({error: error.message})
