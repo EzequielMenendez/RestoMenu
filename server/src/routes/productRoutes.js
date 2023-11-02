@@ -1,7 +1,6 @@
 import { Router } from "express"
 import isRestaurant from "../middlewares/isRestaurant"
 import getProduct from "../controllers/productController/getProduct"
-import getCategory from "../controllers/productController/getCategory"
 import postProduct from "../controllers/productController/postProduct"
 import postCategory from "../controllers/productController/postCategory"
 import verifyToken from "../middlewares/authJwt"
@@ -14,8 +13,6 @@ import getProductById from "../controllers/productController/getProductById"
 const productRouter = Router()
 
 productRouter.get('/', getProduct)
-
-productRouter.get('/category', getCategory)
 
 productRouter.get('/:id', getProductById)
 

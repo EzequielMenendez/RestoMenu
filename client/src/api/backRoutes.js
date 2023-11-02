@@ -12,10 +12,6 @@ export const getProductRequest = (categoryId) => {
     return axios.get(`/product?categoryId=${categoryId}`)
 }
 
-export const getCategoryRequest = (restaurantId) => {
-    return axios.get(`/product/category?restaurantId=${restaurantId}`)
-}
-
 export const getProductByIdRequest = (productId) => {
     return axios.get(`/product/${productId}`)
 }
@@ -50,4 +46,8 @@ export const getRestaurantsRequest = () => {
 
 export const getRestaurantsbyNameRequest = (name) => {
     return axios.get(`/user/restaurant?name=${name}`)
+}
+
+export const getRestaurantByIdRequest = (restaurantId) => {
+    return axios.get(`/user/restaurant/${restaurantId}`)
 }
