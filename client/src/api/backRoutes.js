@@ -43,3 +43,11 @@ export const deleteProductRequest = (productId) => {
 export const deleteCategoryRequest = (categoryId) => {
     return axios.delete(`/product/category/${categoryId}`)
 }
+
+export const getRestaurantsRequest = () => {
+    return axios.get(`/user/restaurant`)
+}
+
+export const getRestaurantsbyNameRequest = (name) => {
+    return axios.get(`/user/restaurant?name=${name}`)
+}
