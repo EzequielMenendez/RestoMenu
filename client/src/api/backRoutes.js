@@ -51,3 +51,7 @@ export const getRestaurantsbyNameRequest = (name) => {
 export const getRestaurantByIdRequest = (restaurantId) => {
     return axios.get(`/user/restaurant/${restaurantId}`)
 }
+
+export const putRestaurantRequest = (restaurantId, restaurantInfo)=>{
+    return axios.put(`/user/restaurant/${restaurantId}`, restaurantInfo)
+}
