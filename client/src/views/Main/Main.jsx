@@ -1,17 +1,12 @@
-import { getRestaurantsRequest } from "../../api/backRoutes"
-import { useEffect, useState } from "react"
+import {useDispatch, useSelector} from 'react-redux'
+import { useEffect } from 'react'
+import { getRestaurants } from '../../redux/actions'
 
 const Main = ()=>{
-
-    const [ restaurants, setRestaurants ] = useState()
-
+    const dispatch = useDispatch()
+    const restaurants = useSelector((state)=>state.restaurants)
     useEffect(()=>{
-        const asyncFunction = async()=>{
-            const {data} = await getRestaurantsRequest()
-            setRestaurants(data)
-            console.log(data)
-        }
-        asyncFunction()
+        dispatch(getRestaurants())
     }, [])
 
     return (
