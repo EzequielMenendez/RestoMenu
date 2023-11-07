@@ -7,7 +7,6 @@ const Cards = ()=>{
         <div>
             {restaurants?.map((r)=>(
                 <div key={r._id}>
-                    {console.log(r)}
                     <Card username={r.username} image={r.image} location={r.location}/>
                 </div>
             ))}
