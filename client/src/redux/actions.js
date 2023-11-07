@@ -1,6 +1,7 @@
 import { getRestaurantsRequest, getRestaurantsbyNameRequest } from "../api/backRoutes"
 
 export const GET_RESTAURANTS = 'GET_RESTAURANTS'
+export const GET_RESTAURANTSBYNAME = 'GET_RESTAURANTSBYNAME'
 
 export const getRestaurants = ()=>{
     return async(dispatch)=>{
@@ -21,8 +22,11 @@ export const getRestaurantsByName = (name) =>{
         try {
             const {data} = await getRestaurantsbyNameRequest(name)
             return dispatch({
-                type: GET_RESTAURANTS,
-                payload: data
+                type: GET_RESTAURANTSBYNAME,
+                payload: {
+                    data,
+                    name
+                }
             })
         } catch (error) {
             

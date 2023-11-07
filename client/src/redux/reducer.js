@@ -1,11 +1,12 @@
-import { GET_RESTAURANTS } from "./actions"
+import { GET_RESTAURANTS, GET_RESTAURANTSBYNAME } from "./actions"
 
 const initialState = {
     user: null,
     isAuth: false,
     errors: null,
     loading: true,
-    restaurants: []
+    restaurants: [],
+    name: ''
 }
 
 function rootReducer(state=initialState, action){
@@ -14,6 +15,12 @@ function rootReducer(state=initialState, action){
             return {
                 ...state,
                 restaurants: action.payload
+            }
+        case GET_RESTAURANTSBYNAME:
+            return {
+                ...state,
+                restaurants: action.payload.data,
+                name: action.payload.name
             }
         default:
             return state
