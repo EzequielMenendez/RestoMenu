@@ -5,7 +5,7 @@ const Register = ()=>{
     const {register, handleSubmit, formState:{errors}} = useForm()
 
     const onSubmit = (values) =>{
-        
+        values.roles = "restaurant"
     }
 
     return (
@@ -37,10 +37,11 @@ const Register = ()=>{
                 ) : null}
                 <input type="password" {...register('password', {required: 'true', minLength: 6})} placeholder='password'/>
                 {errors.password?.type === 'required' ? (
-                    <p className='text-red-500'>password is required</p>
+                    <p>password is required</p>
                 ) : errors.password?.type === 'minLength' ? (
-                    <p className='text-red-500'>Password must be at least 6 characters</p>
+                    <p>Password must be at least 6 characters</p>
                 ) : null}
+                
                 <button type='submit'>Register</button>
             </form>
         </div>
