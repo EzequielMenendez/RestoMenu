@@ -1,5 +1,4 @@
 import { Router } from "express"
-import isRestaurant from "../middlewares/isRestaurant"
 import getProduct from "../controllers/productController/getProduct"
 import postProduct from "../controllers/productController/postProduct"
 import postCategory from "../controllers/productController/postCategory"
@@ -16,16 +15,16 @@ productRouter.get('/', getProduct)
 
 productRouter.get('/:id', getProductById)
 
-productRouter.post('/', [verifyToken, isRestaurant], postProduct)
+productRouter.post('/', [verifyToken], postProduct)
 
-productRouter.put('/category/:id', [verifyToken, isRestaurant], putCategory)
+productRouter.put('/category/:id', [verifyToken], putCategory)
 
-productRouter.delete('/category/:id', [verifyToken, isRestaurant], deleteCategory)
+productRouter.delete('/category/:id', [verifyToken], deleteCategory)
 
-productRouter.put('/:id', [verifyToken, isRestaurant], putProduct)
+productRouter.put('/:id', [verifyToken], putProduct)
 
-productRouter.delete('/:id', [verifyToken, isRestaurant], deleteProduct)
+productRouter.delete('/:id', [verifyToken], deleteProduct)
 
-productRouter.post('/category', [verifyToken, isRestaurant], postCategory)
+productRouter.post('/category', [verifyToken], postCategory)
 
 export default productRouter
