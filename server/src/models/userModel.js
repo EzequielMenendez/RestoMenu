@@ -25,11 +25,7 @@ const userSchema = new Schema({
     categories:[{
         ref: "Category",
         type: Schema.Types.ObjectId
-    }],
-    roles: {
-        ref: "Role",
-        type: Schema.Types.ObjectId
-    }
+    }]
 },
 {
     timestamps: true,
