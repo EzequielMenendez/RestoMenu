@@ -1,5 +1,4 @@
 import { useForm } from 'react-hook-form'
-import MapRegister from '../../components/Map/MapRegister'
 
 const Register = ()=>{
 
@@ -42,7 +41,6 @@ const Register = ()=>{
                 ) : errors.password?.type === 'minLength' ? (
                     <p>Password must be at least 6 characters</p>
                 ) : null}
-                <MapRegister/>
                 <button type='submit'>Register</button>
             </form>
         </div>
