@@ -17,7 +17,12 @@ const userSchema = new Schema({
         require: true
     },
     location:{
-        type: String
+        type: String,
+        require: true
+    },
+    contact:{
+        type: Number,
+        require: true
     },
     image:{
         type: String
