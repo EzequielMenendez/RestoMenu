@@ -1,14 +1,13 @@
 import userFind from '../../libs/userFind'
 import User from '../../models/userModel'
-import Role from '../../models/roleModel'
 import jwt from 'jsonwebtoken'
 import config from '../../config'
 
 const registerController = async(req, res) => {
-    const {username, email, password, roles} = req.body
-    if(!username || !email || !password || !roles){
-        return res.status(400).json({error: "Please fill out all the required fields."})
-    }
+    const {username, email, password, location, image, contact} = req.body
+    return res.status(400).json({error: "Please fill out all the required fields."})
+}
+if(!username || !email || !password || !location || !image || !contact){
     try { 
         const userFound = await userFind(email, username)
         if(userFound){
@@ -18,20 +17,11 @@ const registerController = async(req, res) => {
         let newUser = new User({
             username,
             email,
-            password: await User.encryptPassword(password)
+            password: await User.encryptPassword(password),
+            location,
+            image,
+            contact
         })
-
-        const foundRole = await Role.findOne({name: roles})
-        newUser.roles = foundRole
-
-        if(roles === "restaurant"){
-            const { location, image } = req.body
-            if(!location){
-                return res.status(400).json({error: "Please fill out all the required fields."})
-            }
-            newUser.location = location
-            newUser.image = image
-        }
     
         const saveUser = await newUser.save()
 
