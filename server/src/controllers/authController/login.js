@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken'
 const loginController = async(req, res) => {
     const {email, password} = req.body
     try {
-       const userFound = await User.findOne({email}).populate("roles")
+       const userFound = await User.findOne({email})
         if(!userFound)return res.status(404).json({error: "User not found"})
 
         const matchPassword = await User.comparePassword(password, userFound.password)
