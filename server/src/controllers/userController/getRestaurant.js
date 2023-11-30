@@ -3,9 +3,8 @@ import User from "../../models/userModel"
 const getRestaurant = async(req, res) => {
     const {name} = req.query
     try {
-        const users = await User.find().populate('roles')
-        const restaurants = users.filter(user=> user?.roles?.name === "restaurant")
-        if(!restaurants)return res.status(404).json({error: 'Restaurants not found'})
+        const users = await User.find()
+        if(!users)return res.status(404).json({error: 'Restaurants not found'})
 
         if(name){
             const filteredRestaurants = restaurants.filter(restaurant => {
