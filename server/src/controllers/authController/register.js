@@ -5,9 +5,9 @@ import config from '../../config'
 
 const registerController = async(req, res) => {
     const {username, email, password, location, image, contact} = req.body
-    return res.status(400).json({error: "Please fill out all the required fields."})
-}
-if(!username || !email || !password || !location || !image || !contact){
+    if(!username || !email || !password || !location || !image || !contact){
+        return res.status(400).json({error: "Please fill out all the required fields."})
+    }
     try { 
         const userFound = await userFind(email, username)
         if(userFound){
