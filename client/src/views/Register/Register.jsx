@@ -1,11 +1,30 @@
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form'
+import axios from "axios"
 
 const Register = ()=>{
 
     const {register, handleSubmit, formState:{errors}} = useForm()
+    const [urlImage, setUrlImage] = useState(null)
 
     const onSubmit = (values) =>{
         values.roles = "restaurant"
+    }
+
+    const changeImage = async(e) => {
+        const file = e.target.files[0]
+
+        const data = new FormData()
+        data.append('file', file)
+        data.append('upload_preset', 'Presents_react')
+
+        try {
+            const res = await axios.post("https://api.cloudinary.com/v1_1/dzy1ovaxq/image/upload", data)
+            console.log(setUrlImage)
+            setUrlImage(res.data.secure_url)
+        } catch (error) {
+            console.error("Error uploading image:", error);
+        }
     }
 
     return (
@@ -60,6 +79,17 @@ const Register = ()=>{
                 ) : errors.contact?.type === 'minLength' ? (
                     <p>contact must be at least 9 characters</p>
                 ) : null}
+
+                <input type="file" accept='image/*' {...register('image', {required: true})} onChange={changeImage}/>
+                {errors.image?.type === 'required' && (
+                    <p>image is required</p>
+                )}
+                {urlImage && (
+                    <div>
+                        <img src={urlImage}/>
+                        <button>Eliminar Imagen</button>
+                    </div>
+                )}
                 <button type='submit'>Register</button>
             </form>
         </div>
