@@ -27,6 +27,10 @@ const Register = ()=>{
         }
     }
 
+    const onDelete = () => {
+        setUrlImage(null)
+    }
+
     return (
         <div>
             <p>Register</p> 
@@ -87,7 +91,7 @@ const Register = ()=>{
                 {urlImage && (
                     <div>
                         <img src={urlImage}/>
-                        <button>Eliminar Imagen</button>
+                        <button onClick={onDelete}>Eliminar Imagen</button>
                     </div>
                 )}
                 <button type='submit'>Register</button>
