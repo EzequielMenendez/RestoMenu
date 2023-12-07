@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form'
 import axios from "axios"
 import { useDispatch } from 'react-redux'
@@ -10,6 +10,7 @@ const Register = ()=>{
 
     const {register, handleSubmit, formState:{errors}} = useForm()
     const [urlImage, setUrlImage] = useState(null)
+    const inputRef = useRef(null)
 
     const onSubmit = (values) =>{
         if(urlImage){
@@ -36,6 +37,9 @@ const Register = ()=>{
 
     const onDelete = () => {
         setUrlImage(null)
+        if (inputRef.current) {
+            inputRef.current.value = '';
+        }
     }
 
     return (
@@ -91,7 +95,7 @@ const Register = ()=>{
                     <p>contact must be at least 9 characters</p>
                 ) : null}
 
-                <input type="file" accept='image/*' onChange={changeImage}/>
+                <input type="file" accept='image/*' onChange={changeImage} ref={inputRef} className="file-input"/>
                 {urlImage && (
                     <div>
                         <img src={urlImage}/>
