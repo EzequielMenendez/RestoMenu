@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import axios from "axios"
 import { useDispatch } from 'react-redux'
 import { singUp } from '../../redux/actions';
+import { RegisterContainer } from './StyledRegister';
 
 const Register = ()=>{
 
@@ -44,7 +45,8 @@ const Register = ()=>{
 
     return (
         <div>
-            <p>Register</p> 
+        <RegisterContainer>
+            <p>Register</p>
             <form onSubmit={handleSubmit(onSubmit)}>
 
                 <input type='text' {...register('username', {required: 'true'})} placeholder='username'/>
@@ -104,6 +106,7 @@ const Register = ()=>{
                 )}
                 <button type='submit'>Register</button>
             </form>
+        </RegisterContainer>
         </div>
     )
 }
