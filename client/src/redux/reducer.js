@@ -1,4 +1,4 @@
-import { GET_RESTAURANTS, GET_RESTAURANTSBYNAME } from "./actions"
+import { GET_RESTAURANTS, GET_RESTAURANTSBYNAME, SING_UP } from "./actions"
 
 const initialState = {
     user: null,
@@ -21,6 +21,11 @@ function rootReducer(state=initialState, action){
                 ...state,
                 restaurants: action.payload.data,
                 name: action.payload.name
+            }
+        case SING_UP:
+            return {
+                ...state,
+                user: action.payload
             }
         default:
             return state

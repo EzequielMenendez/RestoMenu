@@ -1,7 +1,8 @@
-import { getRestaurantsRequest, getRestaurantsbyNameRequest } from "../api/backRoutes"
+import { getRestaurantsRequest, getRestaurantsbyNameRequest, registerRequest } from "../api/backRoutes"
 
 export const GET_RESTAURANTS = 'GET_RESTAURANTS'
 export const GET_RESTAURANTSBYNAME = 'GET_RESTAURANTSBYNAME'
+export const SING_UP = "SING_UP"
 
 export const getRestaurants = ()=>{
     return async(dispatch)=>{
@@ -27,6 +28,20 @@ export const getRestaurantsByName = (name) =>{
                     data,
                     name
                 }
+            })
+        } catch (error) {
+            
+        }
+    }
+}
+
+export const singUp = (restaurant) => {
+    return async function(dispatch){
+        try {
+            const res = await registerRequest(restaurant)
+            return dispatch({
+                type: SING_UP,
+                payload: res.data
             })
         } catch (error) {
             

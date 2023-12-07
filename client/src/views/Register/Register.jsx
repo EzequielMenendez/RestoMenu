@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form'
 import axios from "axios"
+import { useDispatch } from 'react-redux'
+import { singUp } from '../../redux/actions';
 
 const Register = ()=>{
+
+    const dispatch = useDispatch()
 
     const {register, handleSubmit, formState:{errors}} = useForm()
     const [urlImage, setUrlImage] = useState(null)
 
     const onSubmit = (values) =>{
-        values.roles = "restaurant"
+        if(urlImage){
+            values.image = urlImage
+            dispatch(singUp(values))
+        }
     }
 
     const changeImage = async(e) => {
@@ -84,10 +91,7 @@ const Register = ()=>{
                     <p>contact must be at least 9 characters</p>
                 ) : null}
 
-                <input type="file" accept='image/*' {...register('image', {required: true})} onChange={changeImage}/>
-                {errors.image?.type === 'required' && (
-                    <p>image is required</p>
-                )}
+                <input type="file" accept='image/*' onChange={changeImage}/>
                 {urlImage && (
                     <div>
                         <img src={urlImage}/>
