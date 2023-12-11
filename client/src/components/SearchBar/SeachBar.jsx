@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { getRestaurantsByName } from "../../redux/actions"
 import { useDispatch, useSelector } from "react-redux"
+import { StyledInput } from "./StyledSearchBar"
 
 const SearchBar = ()=>{
 
@@ -15,7 +16,7 @@ const SearchBar = ()=>{
 
     return (
         <div>
-            <input type="text" onChange={onChange} value={search}/>
+            <StyledInput type="text" onChange={onChange} value={search}/>
         </div>
     )
 }

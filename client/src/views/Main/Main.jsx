@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { getRestaurants, getRestaurantsByName } from '../../redux/actions'
 import Cards from '../../components/Cards/Cards'
 import SearchBar from '../../components/SearchBar/SeachBar'
+import { MainContainer } from './StyledMain'
 
 const Main = ()=>{
     const dispatch = useDispatch()
@@ -16,10 +17,10 @@ const Main = ()=>{
     }, [])
 
     return (
-        <div>
+        <MainContainer>
             <SearchBar />
             <Cards />
-        </div>
+        </MainContainer>
     )
 }
 
