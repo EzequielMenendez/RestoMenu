@@ -14,7 +14,8 @@ function rootReducer(state=initialState, action){
         case GET_RESTAURANTS:
             return {
                 ...state,
-                restaurants: action.payload
+                restaurants: action.payload,
+                name: ''
             }
         case GET_RESTAURANTSBYNAME:
             return {

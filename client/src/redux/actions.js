@@ -13,7 +13,12 @@ export const getRestaurants = ()=>{
                 payload: data
             })
         } catch (error) {
-            
+            if(error.response.data.error === 'Restaurants not found'){
+                return dispatch({
+                    type: GET_RESTAURANTS,
+                    payload: []
+                })
+            }
         }
     }
 }
@@ -30,7 +35,15 @@ export const getRestaurantsByName = (name) =>{
                 }
             })
         } catch (error) {
-            
+            if(error.response.data.error === 'Restaurants not found'){
+                return dispatch({
+                    type: GET_RESTAURANTSBYNAME,
+                    payload: {
+                        data: [],
+                        name: ''
+                    }
+                })
+            }
         }
     }
 }

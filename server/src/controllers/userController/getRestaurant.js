@@ -7,7 +7,7 @@ const getRestaurant = async(req, res) => {
         if(!users)return res.status(404).json({error: 'Restaurants not found'})
 
         if(name){
-            const filteredRestaurants = restaurants.filter(restaurant => {
+            const filteredRestaurants = users.filter(restaurant => {
                 const restaurantName = restaurant.username.toLowerCase();
                 const searchName = name.toLowerCase();
                 return restaurantName.includes(searchName);
@@ -18,7 +18,7 @@ const getRestaurant = async(req, res) => {
                 return res.status(200).json(filteredRestaurants);
             }
         }
-        return res.status(200).json(restaurants)
+        return res.status(200).json(users)
     } catch (error) {
         res.status(500).json({error: error})
     }
