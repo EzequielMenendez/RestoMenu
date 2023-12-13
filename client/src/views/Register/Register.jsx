@@ -110,7 +110,7 @@ const Register = ()=>{
                 {(count > 0 && !urlImage) ? (
                     <p className='error-message'>file no</p>
                 ) : null}
-                <button type='submit'>Register</button>
+                <button type='submit'>Sing Up</button>
             </form>
         </RegisterContainer>
         </div>
